@@ -1,0 +1,36 @@
+NHL Results Summary:
+Players with the highest game winning goals and their teams:
+Simmonds, Wayne PHI
+Comtois, Max ANA
+Zajac, Travis NJ
+Sissons, Colton NSH
+MacKinnon, Nathan COL
+Lindholm, Elias CGY
+Bailey, Josh NYI
+Iafallo, Alex LA
+Players with the highest average time on ice and their team:
+Giordano, Mark CGY
+Players that have maximum number of penalty minutes and their teams:
+Kreider, Chris NYR
+Players that have the maximum number of shots on goal and their teams
+MacKinnon, Nathan COL
+Players that have the maximum number of assists and their teams:
+Carrick, Connor DAL
+Eriksson, Loui VAN
+Kerfoot, Alexander COL
+Johnson, Erik COL
+Keith, Duncan CHI
+Domi, Max MTL
+Nyquist, Gustav DET
+Williams, Justin CAR
+Teams that had the most number of penalty minutes: 
+NYR
+Teams had the most number of game winning goals:
+NSH
+NJ
+NYI
+PHI
+CGY
+ANA
+COL
+LA

@@ -1,0 +1,8 @@
+Enter the first filename to read from:
+C:\Users\Administrator\IdeaProjects\CSCI2110-Assignment2\src\nameList
+Item Jill already present
+[Aaron, Amar, Barbara, Beth, Fred, Hillary, Jack, Jarred, Jill, Jim, Ralph, Shai, Tom]
+Enter the second filename to read from:
+C:\Users\Administrator\IdeaProjects\CSCI2110-Assignment2\src\nameList2
+[Aaron, Hulk, Natasha, Peter, Robert, Steve, Thor, Tony]
+[Aaron, Amar, Barbara, Beth, Fred, Hillary, Hulk, Jack, Jarred, Jill, Jim, Natasha, Peter, Ralph, Robert, Shai, Steve, Thor, Tom, Tony]
