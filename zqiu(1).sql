@@ -1,22 +1,9 @@
--- phpMyAdmin SQL Dump
--- version 4.8.3
--- https://www.phpmyadmin.net/
---
--- Host: db.cs.dal.ca
--- Generation Time: Dec 02, 2018 at 06:45 PM
--- Server version: 5.7.10
--- PHP Version: 7.1.22
+use zqiu;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `zqiu`
@@ -25,166 +12,269 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Children-User`
+-- Table structure for table `HealthRecord`
 --
 
-CREATE TABLE `Children-User` (
-  `UserID` int(11) NOT NULL,
-  `FamilyID` int(11) NOT NULL,
-  `Email` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `Children-User`
---
-
-INSERT INTO `Children-User` (`UserID`, `FamilyID`, `Email`) VALUES
-(1, 1, '1@dal.ca'),
-(2, 2, '2@dal.ca'),
-(3, 3, '3@dal.ca'),
-(4, 4, '4@dal.ca'),
-(5, 5, '5@dal.ca'),
-(6, 6, '6@dal.ca'),
-(7, 7, '7@dal.ca'),
-(8, 8, '8@dal.ca'),
-(9, 9, '9@dal.ca'),
-(10, 10, '10@dal.ca');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Doctor`
---
-
-CREATE TABLE `Doctor` (
-  `DoctorID` int(11) NOT NULL,
-  `Name` varchar(11) NOT NULL,
-  `DoctorPhone` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `Doctor`
---
-
-INSERT INTO `Doctor` (`DoctorID`, `Name`, `DoctorPhone`) VALUES
-(1, '1', 9029999),
-(2, '2', 9029989),
-(3, '3', 9039999),
-(4, '4', 9029299),
-(5, '5', 9029929),
-(6, '6', 9029499),
-(7, '7', 9029959),
-(8, '8', 902567),
-(9, '9', 90223499),
-(10, '10', 9032444);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Parent-User`
---
-
-CREATE TABLE `Parent-User` (
-  `UserID` int(11) NOT NULL,
-  `FamilyID` int(11) NOT NULL,
+CREATE TABLE `HealthRecord` (
+  `Username` varchar(45) NOT NULL,
   `Height` int(11) NOT NULL,
   `Weight` int(11) NOT NULL,
   `BloodPressure` int(11) NOT NULL,
-  `HeartRate` int(11) NOT NULL,
-  `DoctorID` int(11) NOT NULL
+  `HeartRate` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `Parent-User`
+-- Dumping data for table `HealthRecord`
 --
 
-INSERT INTO `Parent-User` (`UserID`, `FamilyID`, `Height`, `Weight`, `BloodPressure`, `HeartRate`, `DoctorID`) VALUES
-(11, 1, 170, 120, 130, 75, 1),
-(12, 2, 170, 120, 130, 75, 2),
-(13, 3, 170, 120, 130, 75, 3),
-(14, 4, 170, 120, 130, 75, 5),
-(15, 5, 170, 120, 130, 75, 6),
-(16, 6, 170, 120, 130, 75, 7),
-(17, 7, 170, 120, 130, 75, 9),
-(18, 8, 170, 120, 130, 75, 10),
-(19, 9, 170, 120, 130, 75, 8),
-(20, 10, 170, 120, 130, 75, 4);
+INSERT INTO `HealthRecord` (`Username`, `Height`, `Weight`, `BloodPressure`, `HeartRate`) VALUES
+('123', 165, 110, 90, 60),
+('amous', 167, 105, 95, 56),
+('AmousQiu', 170, 120, 120, 70),
+('ares', 168, 120, 98, 78),
+('Hebe', 172, 110, 116, 87),
+('Iris', 175, 130, 120, 85),
+('Joshua', 180, 140, 130, 92),
+('KevinChou', 176, 120, 130, 70),
+('rubio', 192, 150, 120, 56),
+('Tom', 177, 120, 110, 55);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `User`
+-- Table structure for table `Relationship`
 --
 
-CREATE TABLE `User` (
-  `UserID` int(11) NOT NULL,
-  `Name` varchar(45) DEFAULT NULL,
-  `Gender` varchar(45) DEFAULT NULL,
-  `Age` int(11) DEFAULT NULL,
-  `Status` varchar(45) NOT NULL,
-  `Password` varchar(45) DEFAULT NULL,
-  `Telephone#` int(11) DEFAULT NULL,
-  `Address` varchar(45) DEFAULT NULL,
-  `FamilyID` varchar(45) NOT NULL,
-  `DoctorID` varchar(45) NOT NULL
+CREATE TABLE `Relationship` (
+  `f_User` varchar(45) NOT NULL,
+  `s_User` varchar(45) NOT NULL,
+  `r_no` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `User`
+-- Dumping data for table `Relationship`
 --
 
-INSERT INTO `User` (`UserID`, `Name`, `Gender`, `Age`, `Status`, `Password`, `Telephone#`, `Address`, `FamilyID`, `DoctorID`) VALUES
-(1, 'Shivam', 'Male', 23, 'Children', '123465', 123124, 'DJscsd', '1', '1'),
-(2, 'Sam', 'Male', 21, 'Children', 'Something', 342332, '123132', '2', '1'),
-(3, 'David', 'Male', 21, 'Children', '12432566', 342332, '123132', '3', '2'),
-(4, 'Ellen', 'Female', 21, 'Children', 'Something', 342332, '123132', '4', '4'),
-(5, 'Ben', 'Male', 21, 'Children', '1345123', 342332, '123132', '5', '4'),
-(6, 'Samatha', 'Female', 21, 'Children', '125232', 342332, '123132', '6', '4'),
-(7, 'Ana', 'Female', 21, 'Children', 'Something', 342332, '123132', '7', '5'),
-(8, 'Jenny', 'Female', 25, 'Children', 'qweg2', 12870135, '1030af1', '8', '10'),
-(9, 'Elysha', 'Female', 21, 'Children', 'Something', 342332, '123132', '9', '6'),
-(10, 'Peter', 'Male', 21, 'Children', '2345324', 342232, '123dfs', '10', '7'),
-(11, 'Simon', 'Male', 56, 'Parent', '15g1rfsd23', 19875990, 'qduqqq', '1', '1'),
-(12, 'Robert', 'Male', 58, 'Parent', '15g345', 19875990, 'qduqqq', '2', '1'),
-(13, 'Danniel', 'Male', 63, 'Parent', 'sdg231', 19875990, 'qduqqq', '3', '2'),
-(14, 'Melissa', 'Female', 55, 'Parent', '1354622', 1469203, 'qduqqq', '4', '4'),
-(15, 'Rosa', 'Female', 57, 'Parent', 'adh124', 19875990, 'qduqqq', '5', ''),
-(16, 'Taylor', 'Female', 65, 'Parent', '356f32r1', 23546464, 'srshth', '6', '4'),
-(17, 'Asher', 'Male', 67, 'Parent', 'sdg235', 125643, 'qetgrqwerg', '7', '5'),
-(18, 'Kam', 'Male', 67, 'Parent', '2344365', 19875990, 'qduqqq', '8', '10'),
-(19, 'Luke', 'Male', 76, 'Parent', '15g1rfsd23', 19875990, 'qduqqq', '9', '6'),
-(20, 'Blue', 'Male', 67, 'Parent', '15g1rfsd23', 19875990, 'qduqqq', '10', '7');
+INSERT INTO `Relationship` (`f_User`, `s_User`, `r_no`) VALUES
+('123', 'ares', 1),
+('amous', 'Hebe', 2),
+('AmousQiu', 'Iris', 3),
+('ares', '123', 1),
+('Hebe', 'Amous', 2),
+('Iris', 'AmousQiu', 3),
+('Joshua', 'KevinChou', 4),
+('KevinChou', 'Joshua', 4),
+('rubio', 'Tom', 5),
+('Tom', 'rubio', 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Userfix`
+--
+
+CREATE TABLE `Userfix` (
+  `UserName` varchar(45) NOT NULL,
+  `Name` varchar(45) NOT NULL,
+  `Gender` varchar(45) DEFAULT NULL,
+  `Age` int(11) DEFAULT NULL,
+  `Password` varchar(45) NOT NULL,
+  `Telephone` varchar(11) NOT NULL,
+  `Address` varchar(45) DEFAULT NULL,
+  `Email` varchar(45) DEFAULT NULL,
+  `category` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Userfix`
+--
+
+INSERT INTO `Userfix` (`UserName`, `Name`, `Gender`, `Age`, `Password`, `Telephone`, `Address`, `Email`, `category`) VALUES
+('123', '123', 'Male', 18, '123', '123', '123 Mountain Street', '1234@dal.ca', 'Children'),
+('amous', 'qiu ziyu', 'Female', 20, '1111', '1897007', '1234 Hill Street', '1234@dal.ca', 'Children'),
+('AmousQiu', 'Amous', 'Female', 20, '19980420', '9029895420', '178 South Street', '1749@dal.ca', 'Children'),
+('ares', 'qiu shaojie', 'Male', 48, '123456', '1887007', '1000 Hill Street', '123@dal.ca', 'Parent'),
+('Hebe', 'Hebe', 'Female', 60, '12345', '16437', '1000 Mountain Street', '1000@dal.ca', 'Parent'),
+('Iris', 'Iris', 'Male', 60, '123456', '19402752', '1000 South Park Street', '1029@dal.ca', 'Parent'),
+('Joshua', 'joshuakushner', 'Male', 60, '123634', '19802471', '100 Tower Road', '1094@dal.ca', 'Parent'),
+('KevinChou', 'KevinChou', 'Male', 21, '123456', '1982034', '100 North Street', '23@dal.ca', 'Children'),
+('rubio', 'rickyrubio', 'Male', 25, '1984021', '1998203', '400 Victoria Street', '123@dal.ca', 'Children'),
+('Tom', 'Tomdaley', 'Male', 50, '123456', '1975023', '1040 Spring Garden Street', '1004@dal.ca', 'Parent');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `Children-User`
+-- Indexes for table `HealthRecord`
 --
-ALTER TABLE `Children-User`
-  ADD PRIMARY KEY (`UserID`);
+ALTER TABLE `HealthRecord`
+  ADD PRIMARY KEY (`Username`),
+  ADD UNIQUE KEY `UserName` (`Username`),
+  ADD UNIQUE KEY `Username_2` (`Username`);
 
 --
--- Indexes for table `Doctor`
+-- Indexes for table `Relationship`
 --
-ALTER TABLE `Doctor`
-  ADD PRIMARY KEY (`DoctorID`);
+ALTER TABLE `Relationship`
+  ADD PRIMARY KEY (`f_User`),
+  ADD UNIQUE KEY `s_User` (`s_User`);
 
 --
--- Indexes for table `Parent-User`
+-- Indexes for table `Userfix`
 --
-ALTER TABLE `Parent-User`
-  ADD PRIMARY KEY (`UserID`);
+ALTER TABLE `Userfix`
+  ADD PRIMARY KEY (`UserName`);
 
 --
--- Indexes for table `User`
+-- Constraints for dumped tables
 --
-ALTER TABLE `User`
-  ADD PRIMARY KEY (`UserID`) USING BTREE,
-  ADD KEY `DoctorID` (`DoctorID`);
+
+--
+-- Constraints for table `HealthRecord`
+--
+ALTER TABLE `HealthRecord`
+  ADD CONSTRAINT `HealthRecord_ibfk_1` FOREIGN KEY (`Username`) REFERENCES `Userfix` (`UserName`);
+
+--
+-- Constraints for table `Relationship`
+--
+ALTER TABLE `Relationship`
+  ADD CONSTRAINT `Relationship_ibfk_1` FOREIGN KEY (`f_User`) REFERENCES `Userfix` (`UserName`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+#Sign up a new user
+INSERT INTO `Userfix`(
+    `UserName`,
+    `Name`,
+    `Gender`,
+    `Age`,
+    `Password`,
+    `Telephone`,
+    `Address`,
+    `Email`,
+    `category`
+)
+VALUES(
+    'Haley',
+    'Haley',
+    'Female',
+    '21',
+    '123456',
+    '198402',
+    '1000 Hill Street',
+    'asd@dal.ca',
+    'Children'
+);
+
+#Insert this user's health record
+INSERT INTO `HealthRecord`(
+    `Username`,
+    `Height`,
+    `Weight`,
+    `BloodPressure`,
+    `HeartRate`
+)
+VALUES('Haley', '180', '120', '90', '70');
+
+#remove this user's health record
+DELETE 
+FROM 
+  'HealthRecord' 
+WHERE
+   Username='Hayley';
+
+#remove this user's information 
+DELETE
+FROM 
+  `Userfix` 
+ WHERE 
+   UserName='Hayley';
+
+#update name to Anna
+UPDATE 
+  Userfix 
+SET 
+  Name='Anna' 
+WHERE
+  UserName='123';
+
+#Show all the user's information
+SELECT
+    *
+FROM
+    `Userfix`
+
+#Show Hebe's health record
+SELECT
+    *
+FROM
+    HealthRecord
+WHERE
+    UserName = 'Hebe';
+
+#show Hebe's parent's health record
+SELECT
+    *
+FROM
+    HealthRecord
+WHERE
+    UserName =(
+    SELECT
+        s_User
+    FROM
+        Relationship
+    WHERE
+        f_User = 'Hebe'
+);
+
+#Show all the users information about name gender and weight
+SELECT
+    Userfix.Name,
+    Userfix.Gender,
+    HealthRecord.Weight
+FROM
+    Userfix
+INNER JOIN HealthRecord ON HealthRecord.Username = Userfix.UserName;
+
+#Show the amount of female and male users
+SELECT
+    COUNT(UserName),
+    Gender
+FROM
+    Userfix
+GROUP BY
+    Gender;
+
+#Create a view of all the children user's username
+CREATE VIEW ChildrenUser AS
+SELECT 
+  UserName,category
+FROM 
+  Userfix
+WHERE 
+  category='Children';
+
+#show the view
+SELECT * FROM  ChildrenUser;
+
+#Trigger
+#check if the age the user input is more than 0,if not set the age to 0 for future default
+DELIMITER $$
+CREATE TRIGGER Before_checkage_Insert BEFORE INSERT ON Userfix FOR EACH ROW
+BEGIN
+IF NEW.Age<0 THEN SET NEW.Age=0;
+END IF;
+END $$
+DELIMITER ;
+
+#Stored Procedure show the user table
+CREATE DEFINER=`zqiu`@`129.173.0.0/255.255.0.0` PROCEDURE `Test`()
+BEGIN
+  SELECT * FROM Userfix;
+END
+Call Test;
